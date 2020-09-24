@@ -14,11 +14,15 @@ const Avatar = styled.img`
   border-radius: 100%;
 `;
 
+const AuthorName = styled.span`
+  font-weight: 600;
+`;
+
 function Author() {
   return (
     <Content>
       <Avatar src="https://via.placeholder.com/32" alt="Author name"></Avatar>
-      <span>Author name</span>
+      <AuthorName>Author name</AuthorName>
     </Content>
   );
 }
