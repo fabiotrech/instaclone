@@ -1,33 +1,44 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { FaRegHeart, FaRegComment, FaRegPaperPlane } from "react-icons/fa";
 import styled from "styled-components";
 
-const Content = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 40px);
   grid-template-rows: 40px;
+  padding: 2px 5px 0;
 `;
 
 const ActionButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  overflow: hidden;
+  outline: none;
 `;
 
-const Actions = () => {
+type ActionsProps = {
+  onLike: () => void;
+  onGoToPost: () => void;
+  onSendMessage: () => void;
+};
+
+const Actions: FunctionComponent<ActionsProps> = ({
+  onLike,
+  onGoToPost,
+  onSendMessage,
+}) => {
   return (
-    <Content>
-      <ActionButton type="button">
+    <Container>
+      <ActionButton type="button" onClick={onLike}>
         <FaRegHeart size="24px" />
       </ActionButton>
-      <ActionButton type="button">
+      <ActionButton type="button" onClick={onGoToPost}>
         <FaRegComment size="24px" />
       </ActionButton>
-      <ActionButton type="button">
+      <ActionButton type="button" onClick={onSendMessage}>
         <FaRegPaperPlane size="24px" />
       </ActionButton>
-    </Content>
+    </Container>
   );
 };
 
