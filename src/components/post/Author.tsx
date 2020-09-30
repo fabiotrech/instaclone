@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 
 const Content = styled.div`
@@ -18,13 +18,18 @@ const AuthorName = styled.span`
   font-weight: 600;
 `;
 
-function Author() {
+type AuthorProps = {
+  name: string;
+  avatarUrl: string;
+};
+
+const Author: FunctionComponent<AuthorProps> = ({ name, avatarUrl }) => {
   return (
     <Content>
-      <Avatar src="https://via.placeholder.com/32" alt="Author name"></Avatar>
-      <AuthorName>Author name</AuthorName>
+      <Avatar src={avatarUrl} alt={name} />
+      <AuthorName>{name}</AuthorName>
     </Content>
   );
-}
+};
 
 export default Author;

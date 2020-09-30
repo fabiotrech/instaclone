@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -11,11 +11,19 @@ const AuthorName = styled.span`
   text-transform: lowercase;
 `;
 
-const PostDescription = () => {
+type DescriptionProps = {
+  author: string;
+  message: string;
+};
+
+const PostDescription: FunctionComponent<DescriptionProps> = ({
+  author,
+  message,
+}) => {
   return (
     <Container>
-      <AuthorName>Authorname</AuthorName>
-      <span>Proident Lorem aute voluptate nulla excepteur.</span>
+      <AuthorName>{author}</AuthorName>
+      <span>{message}</span>
     </Container>
   );
 };

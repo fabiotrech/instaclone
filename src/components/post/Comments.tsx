@@ -1,22 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, FunctionComponent } from "react";
 import styled from "styled-components";
-
-const dummyComments = [
-  {
-    author: "Author 1",
-    message:
-      "Cillum aliqua excepteur in incididunt aliqua ipsum ad consectetur magna proident esse proident.",
-  },
-  {
-    author: "Author 2",
-    message:
-      "Fugiat occaecat est sit duis eu ut qui nulla officia occaecat et voluptate eiusmod fugiat. Ipsum minim aliqua excepteur est Lorem consectetur enim Lorem in et reprehenderit voluptate. Amet esse elit mollit laborum consectetur aute ad esse ad labore Lorem cupidatat.",
-  },
-  {
-    author: "Author 3",
-    message: "Veniam Lorem nisi in esse qui ipsum nisi.",
-  },
-];
+import CommentModel from "../../models/comment-model";
 
 const AuthorName = styled.span`
   font-weight: 600;
@@ -28,10 +12,14 @@ const Comment = styled.div`
   margin: 4px 0;
 `;
 
-const Comments = () => {
+type CommentsProps = {
+  comments: CommentModel[];
+};
+
+const Comments: FunctionComponent<CommentsProps> = ({ comments }) => {
   return (
     <Fragment>
-      {dummyComments.map((comment, index) => (
+      {comments.map((comment, index) => (
         <Comment key={index}>
           <AuthorName>{comment.author}</AuthorName>
           <span>{comment.message}</span>

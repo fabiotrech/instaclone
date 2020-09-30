@@ -18,13 +18,13 @@ const ActionButton = styled.button`
 
 type ActionsProps = {
   onLike: () => void;
-  onGoToPost: () => void;
+  onViewComments: () => void;
   onSendMessage: () => void;
 };
 
 const Actions: FunctionComponent<ActionsProps> = ({
   onLike,
-  onGoToPost,
+  onViewComments,
   onSendMessage,
 }) => {
   return (
@@ -32,7 +32,7 @@ const Actions: FunctionComponent<ActionsProps> = ({
       <ActionButton type="button" onClick={onLike}>
         <FaRegHeart size="24px" />
       </ActionButton>
-      <ActionButton type="button" onClick={onGoToPost}>
+      <ActionButton type="button" onClick={onViewComments}>
         <FaRegComment size="24px" />
       </ActionButton>
       <ActionButton type="button" onClick={onSendMessage}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 
 const Container = styled.p`
@@ -7,8 +7,31 @@ const Container = styled.p`
   text-transform: uppercase;
 `;
 
-const PostDate = () => {
-  return <Container>Hace una hora</Container>;
+type PostDateProps = {
+  date: Date;
+};
+
+const PostDate: FunctionComponent<PostDateProps> = ({ date }) => {
+  let text = "";
+  const diff = Math.abs(Date.now() - date.valueOf());
+  const diffSeconds = Math.floor(diff / 1000);
+  const diffMinutes = Math.floor(diffSeconds / 60);
+  const diffHours = Math.floor(diffMinutes / 60);
+  const diffDays = Math.floor(diffHours / 24);
+
+  text =
+    diffSeconds < 60
+      ? "Hace unos segundos"
+      : diffMinutes < 60
+      ? "Hace unos minutos"
+      : diffHours < 24
+      ? "Hace unas horas"
+      : diffDays < 7
+      ? "Hace unos días"
+      : date.toLocaleDateString();
+
+  if (text.length === 0) return null;
+  return <Container>{text}</Container>;
 };
 
 export default PostDate;

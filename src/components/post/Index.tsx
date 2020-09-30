@@ -1,5 +1,6 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
+import PostModel from "../../models/post-model";
 
 import Actions from "./Actions";
 import Author from "./Author";
@@ -24,33 +25,35 @@ const Details = styled.div`
   padding: 2px 15px 15px;
 `;
 
-const Post = () => {
-  const handleLike = () => {
-    alert("like");
-  };
+const Post: FunctionComponent<PostModel> = ({
+  author,
+  authorAvatarUrl,
+  imageUrl,
+  likesCount,
+  message,
+  comments,
+  creationDate,
+}) => {
+  const handleLike = () => {};
 
-  const handleGoToPost = () => {
-    alert("go to post");
-  };
+  const handleViewComments = () => {};
 
-  const handleSendMessage = () => {
-    alert("send message");
-  };
+  const handleSendMessage = () => {};
 
   return (
     <Container>
-      <Author />
-      <PostImage src="https://via.placeholder.com/615" alt="" />
+      <Author name={author} avatarUrl={authorAvatarUrl} />
+      <PostImage src={imageUrl} alt="" />
       <Actions
         onLike={handleLike}
-        onGoToPost={handleGoToPost}
+        onViewComments={handleViewComments}
         onSendMessage={handleSendMessage}
       />
       <Details>
-        <LikesCounter />
-        <PostDescription />
-        <Comments />
-        <PostDate />
+        <LikesCounter count={likesCount} />
+        <PostDescription author={author} message={message} />
+        <Comments comments={comments} />
+        <PostDate date={creationDate} />
       </Details>
       <PostForm />
     </Container>

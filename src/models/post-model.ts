@@ -1,6 +1,6 @@
-import Comment from "./comment";
+import CommentModel from "./comment-model";
 
-export default interface Post {
+export default interface PostModel {
   id: number;
   creationDate: Date;
   likesCount: number;
@@ -8,5 +8,5 @@ export default interface Post {
   author: string;
   authorAvatarUrl: string;
   message: string;
-  comments: Comment[];
+  comments: CommentModel[];
 }
