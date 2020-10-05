@@ -1,25 +1,27 @@
 import React from "react";
-import Post from "./components/post/Index";
-import PostModel from "./models/post-model";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { PageContainer } from "./theme";
 import "./app.css";
 
-const postData: PostModel = {
-  id: 15,
-  author: "fabiotrech",
-  authorAvatarUrl: "https://via.placeholder.com/32",
-  creationDate: new Date(2020, 8, 30),
-  imageUrl: "https://via.placeholder.com/615",
-  likesCount: 16,
-  message: "Elit veniam cillum voluptate commodo sint cillum est eiusmod duis.",
-  comments: [],
-};
+import Feed from "./pages/feed";
+import NavBar from "./components/navbar";
+import Profile from "./pages/profile";
+import Inbox from "./pages/inbox";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Post {...postData}></Post>
-    </div>
+    <Router>
+      <NavBar />
+
+      <PageContainer>
+        <Switch>
+          <Route path="/" component={Feed} exact />
+          <Route path="/direct/inbox" component={Inbox} />
+          <Route path="/:profile" component={Profile} />
+        </Switch>
+      </PageContainer>
+    </Router>
   );
-}
+};
 
 export default App;
