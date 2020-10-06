@@ -16,7 +16,7 @@ const App = () => {
       <PageContainer>
         <Switch>
           <Route path="/" component={Feed} exact />
-          <Route path="/direct/inbox" component={Inbox} />
+          <Route path="/inbox" component={Inbox} />
           <Route path="/:profile" component={Profile} />
         </Switch>
       </PageContainer>

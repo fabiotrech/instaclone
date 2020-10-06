@@ -1,14 +1,16 @@
 import React, { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
   margin: 4px 0;
 `;
 
-const AuthorName = styled.span`
+const AuthorName = styled(Link)`
   font-weight: 600;
   margin-right: 5px;
   text-transform: lowercase;
+  text-decoration: none;
 `;
 
 type DescriptionProps = {
@@ -22,7 +24,7 @@ const PostDescription: FunctionComponent<DescriptionProps> = ({
 }) => {
   return (
     <Container>
-      <AuthorName>{author}</AuthorName>
+      <AuthorName to={`/${author}`}>{author}</AuthorName>
       <span>{message}</span>
     </Container>
   );
