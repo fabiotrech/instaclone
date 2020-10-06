@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { AccentColor } from "../../theme";
 
 const FormContainer = styled.form`
   display: grid;
@@ -15,7 +16,7 @@ const TextInput = styled.input`
 `;
 
 const SubmitButton = styled.button`
-  color: #0095f6;
+  color: ${AccentColor};
   cursor: pointer;
   border: none;
   background: none;
