@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderHeight = 54;
 export const AccentColor = "#0095f6";
@@ -13,7 +13,11 @@ export const PageContainer = styled(Container)`
   padding-top: 20px;
 `;
 
-export const AccentButton = styled.button`
+interface AccentButtonProps {
+  block?: boolean;
+}
+
+export const AccentButton = styled.button<AccentButtonProps>`
   color: #fff;
   background-color: ${AccentColor};
   border: none;
@@ -23,4 +27,33 @@ export const AccentButton = styled.button`
   font-weight: 600;
   line-height: 28px;
   border-radius: 3px;
+
+  ${(props) =>
+    props.block &&
+    css`
+      width: 100%;
+    `}
+`;
+
+export const Input = styled.input`
+  border: 1px solid #dbdbdb;
+  background: #fafafa;
+  padding: 8px;
+  font-size: 12px;
+  line-height: 18px;
+  width: 100%;
+  outline: none;
+  border-radius: 3px;
+
+  &:focus {
+    border-color: #262626;
+  }
+`;
+
+export const Form = styled.form`
+  input,
+  select,
+  textarea {
+    margin-bottom: 10px;
+  }
 `;
